@@ -31,12 +31,17 @@ def parse_email(file_name):
                 print par.get_payload(decode=True)
             print '+'*60
     fp.close()
+
+def get_file_extension(file_name):
+    file_extension=os.path.splitext(file_name)[1]
+    return file_extension
+
 def get_through_dir(root_dir):
     list_dir=os.listdir(root_dir)
     #print len(list_dir)
     for i in range(0,len(list_dir)):
         path=os.path.join(root_dir,list_dir[i])
-        if os.path.isfile(path):
+        if os.path.isfile(path) and get_file_extension(path)=='.eml':
             parse_email(path)
     
 def main():
