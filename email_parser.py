@@ -50,6 +50,5 @@ def main():
     #print root_dir
     get_through_dir(root_dir)
     
-
 if __name__=='__main__':
     main()
