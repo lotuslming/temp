@@ -1,0 +1,26 @@
+import sys
+import os
+from cx_Freeze import setup, Executable
+sys.argv.append("build")
+
+os.environ['TCL_LIBRARY'] = r'C:\Software\Python36\tcl\tcl8.6'
+os.environ['TK_LIBRARY'] = r'C:\Software\Python36\tcl\tk8.6'
+
+build_exe_options = {
+    "includes": [ "pyshark","trollius","py"],
+    #"excludes": ["tkinter", "_tkinter", '_gtkagg', '_tkagg', 'bsddb', 'curses',
+    #             'pywin.debugger', 'pywin.debugger.dbgcon', 'pywin.dialogs', 'tcl',
+    #             'unittest', 'idlelib', 'certifi', 'nacl', "_lzma", "_hashlib", "_bz2"],
+    "packages":["pyshark","trollius","py"],
+    #"include_files":include_files,
+    }
+
+
+
+setup(
+    name = "readcap",
+    version = "1.0.1",
+    description = None,
+    options = {"build_exe": build_exe_options},
+    executables = [Executable("readcap_pyshark.py")]
+        )
